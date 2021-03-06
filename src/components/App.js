@@ -16,16 +16,16 @@ function App()
       setNotes((previous) => [...previous, {id: uuidv4(), ...newNote}]);
    }
 
-   function handleNoteDelete(id)
+   function handleNoteDelete(key)
    {
-      setNotes((previous) => previous.filter(x => x.id !== id));
+      setNotes((previous) => previous.filter(x => x.id !== key));
    }
 
   return (
      <div>
         <Header />
         <CreateArea onNewNote={ handleNewNote }/>
-        {notes.map(x => <Note key={ x.id } title={ x.title } content={ x.content } onDelete={() => handleNoteDelete(x.id)}/>) }
+        {notes.map(x => <Note key={ x.id } title={ x.title } content={ x.content } onDelete={handleNoteDelete}/>) }
         <Footer />
     </div>
   );
